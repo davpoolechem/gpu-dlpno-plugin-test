@@ -1,8 +1,8 @@
 #include "gpu-dlpno.hpp"
 
-namespace gpu_dlpno {
+namespace gpu_dlpno_ccsd {
 
-void say_hi() {
+void GPU_DLPNOCCSD::say_hi() {
   printf("Hi from David! ๑(◕‿◕)๑ \n");  
 }
 
