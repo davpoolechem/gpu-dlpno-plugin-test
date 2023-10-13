@@ -2,12 +2,12 @@
 #== Base project info ==#
 #=======================#
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
-project(gpu-dlpno-plugin-test VERSION 0.1 LANGUAGES CXX) 
+project(gpu_dlpno_ccsd VERSION 0.1 LANGUAGES CXX) 
 
-set(gpu_dlpno_plugin_test_AUTHORS      "David Poole")
-set(gpu_dlpno_plugin_test_DESCRIPTION  "GPU-accelerated DLPNO-CCSD plugin to Psi4")
-set(gpu_dlpno_plugin_test_URL          "github.com/davpoolechem/gpu-dlpno-plugin-test")
-set(gpu_dlpno_plugin_test_LICENSE      "GPL 2+")
+set(gpu_dlpno_ccsd_AUTHORS      "David Poole")
+set(gpu_dlpno_ccsd_DESCRIPTION  "GPU-accelerated DLPNO-CCSD plugin to Psi4")
+set(gpu_dlpno_ccsd_URL          "github.com/davpoolechem/gpu_dlpno_ccsd")
+set(gpu_dlpno_ccsd_LICENSE      "GPL 2+")
 
 #======================#
 #== setup base flags ==# 
@@ -73,10 +73,10 @@ set(targets
  $<TARGET_OBJECTS:base>
 )
 
-add_library(gpu_dlpno_plugin_test SHARED
+add_library(gpu_dlpno_ccsd SHARED
   ${targets}
 )
-#target_link_libraries(gpu_dlpno_plugin_test PRIVATE ${LIBC_INTERJECT})
+#target_link_libraries(gpu_dlpno_ccsd PRIVATE ${LIBC_INTERJECT})
 
 # seems to be needed to set up __init__.py correctly
 configure_file(__init__.py.in __init__.py @ONLY)
@@ -84,7 +84,7 @@ configure_file(__init__.py.in __init__.py @ONLY)
 #==============================#
 #== install plugin into psi4 ==# 
 #==============================#
-install (TARGETS gpu_dlpno_plugin_test DESTINATION ${PYMOD_INSTALL_FULLDIR})
+install (TARGETS gpu_dlpno_ccsd DESTINATION ${PYMOD_INSTALL_FULLDIR})
 
 install(FILES pymodule.py README.md
               __init__.py
