@@ -1,9 +1,9 @@
 #
 #@BEGIN LICENSE
 #
-# GPU-accelerated density-fitted coupled-cluster, a plugin to:
+# v2RDM-CASSCF by A. Eugene DePrince III, a plugin to:
 #
-# PSI4: an ab initio quantum chemistry software package
+# Psi4: an open-source quantum chemistry software package
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,15 +22,28 @@
 #@END LICENSE
 #
 
+"""Plugin docstring.
 
-import psi4
-from psi4 import core
+"""
+__version__ = '0.1'
+__author__  = 'David Poole'
+
+# Load Psi4
+psi4_sys_path = '@psi4_SYS_PATH@'
+import sys
+sys.path.append(psi4_sys_path)
+
+# Load Python modules
+from .pymodule import *
+#from .extras import test
+
+# Load C++ plugin
+from .dlpno_gpu_ccsd_test import *
+
+# Load C++ plugin
 import os
-import re
-import psi4.driver.p4util as p4util
-from psi4.driver.procrouting import proc_util
-import psi4.driver.p4util as p4util
-from psi4.driver.p4util.exceptions import *
+import psi4
+plugdir = os.path.split(os.path.abspath(__file__))[0]
+sofile = plugdir + '/' + os.path.split(plugdir)[1] + '.so'
+psi4.core.plugin_load(sofile)
 
-def run_gpu_dlpno_ccsd(name, **kwargs):
-  print("Hi from David! ๑(◕‿◕)๑ \n");  
