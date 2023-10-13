@@ -82,7 +82,7 @@ add_library(gpu-dlpno-plugin-test SHARED
 #==============================#
 install (TARGETS gpu-dlpno-plugin-test DESTINATION ${PYMOD_INSTALL_FULLDIR})
 
-install(FILES pymodule.py LICENSE README.md
+install(FILES pymodule.py README.md
               ${CMAKE_CURRENT_BINARY_DIR}/__init__.py
         DESTINATION ${PYMOD_INSTALL_FULLDIR})
 
