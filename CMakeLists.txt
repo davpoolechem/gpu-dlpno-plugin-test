@@ -3,14 +3,11 @@
 #=======================#
 cmake_minimum_required(VERSION 3.15 FATAL_ERROR)
 project(gpu-dlpno-plugin-test VERSION 0.1 LANGUAGES CXX) 
-set(PN ${PROJECT_NAME})
 
 set(gpu-dlpno-plugin-test_AUTHORS      "David Poole")
 set(gpu-dlpno-plugin-test_DESCRIPTION  "GPU-accelerated DLPNO-CCSD plugin to Psi4")
 set(gpu-dlpno-plugin-test_URL          "github.com/davpoolechem/gpu-dlpno-plugin-test")
 set(gpu-dlpno-plugin-test_LICENSE      "GPL 2+")
-
-set(PN ${PROJECT_NAME})
 
 #======================#
 #== setup base flags ==# 
@@ -29,6 +26,9 @@ endif()
 #=========================================================#
 find_package(psi4)
 include(psi4OptionsTools)
+
+# needs to be here to have correct lib/${PN} name
+set(PN ${PROJECT_NAME})
 
 #   install alongside psi4 module by default, but overrideable
 get_filename_component(psi4_CMAKE_INSTALL_PREFIX ${psi4_INCLUDE_DIR} DIRECTORY)
@@ -83,7 +83,6 @@ add_library(gpu-dlpno-plugin-test SHARED
 install (TARGETS gpu-dlpno-plugin-test DESTINATION ${PYMOD_INSTALL_FULLDIR})
 
 install(FILES pymodule.py README.md
-              #${CMAKE_CURRENT_BINARY_DIR}/__init__.py
               __init__.py
         DESTINATION ${PYMOD_INSTALL_FULLDIR})
 
