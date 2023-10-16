@@ -41,5 +41,7 @@ from .pymodule import *
 import os
 import psi4
 plugdir = os.path.split(os.path.abspath(__file__))[0]
+print(f'plugin dir: {plugdir}')
 sofile = plugdir + '/' + os.path.split(plugdir)[1] + '.so'
+print(f'.so file: {sofile}')
 psi4.core.plugin_load(sofile)
