@@ -1,5 +1,6 @@
 set(sources
-gpu-dlpno.cpp
+#dlpno_gpu.cpp
+test.cpp
 )
 
 include_directories(".")

@@ -37,7 +37,7 @@ get_filename_component(psi4_CMAKE_INSTALL_PREFIX ${psi4_INCLUDE_DIR} DIRECTORY)
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set(CMAKE_INSTALL_PREFIX ${psi4_CMAKE_INSTALL_PREFIX} CACHE PATH "Install path" FORCE)
 endif()
-message(STATUS "--${PN} plugin install prefix: ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "${PN} plugin install prefix: ${CMAKE_INSTALL_PREFIX}")
 
 # define install location of plugin within Psi4 directory
 if(PYMOD_INSTALL_LIBDIR)
@@ -51,16 +51,13 @@ else()
 endif()
 message(STATUS "${PN} plugin module install: ${PYMOD_INSTALL_FULLDIR}")
 
-#==================#
-#== setup python ==# 
-#==================#
-include_directories(${PYTHON_INCLUDE_DIRS})
-
-#=====================================#
-#== setup other include directories ==#
-#=====================================#
+#===============================#
+#== setup include directories ==#
+#===============================#
 include_directories( SYSTEM
                      ${PROJECT_SOURCE_DIR}/src/
+                     ${PYTHON_INCLUDE_DIRS} # for python module
+                     ${psi4_INCLUDE_DIR} # for psi4 include files
                    )
 
 #===================#
