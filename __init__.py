@@ -38,6 +38,8 @@ from .pymodule import *
 #from .extras import test
 
 # Load C++ plugin
+from .gpu_dlpno_ccsd import *
+
 import os
 import psi4
 plugdir = os.path.split(os.path.abspath(__file__))[0]
