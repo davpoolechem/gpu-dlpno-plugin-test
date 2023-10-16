@@ -78,6 +78,10 @@ set(targets
 add_library(gpu_dlpno_ccsd SHARED
   ${targets}
 )
+
+# we need the library name to be gpu_dlpno_ccsd.so, not libgpu_dlpno_ccsd.so
+set_target_properties(gpu_dlpno_ccsd PROPERTIES PREFIX "")
+
 #target_link_libraries(gpu_dlpno_ccsd PRIVATE ${LIBC_INTERJECT})
 
 # seems to be needed to set up __init__.py correctly
