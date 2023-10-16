@@ -35,7 +35,7 @@ sys.path.append(psi4_sys_path)
 
 # Load Python modules
 from .pymodule import *
-from .extras import test
+#from .extras import test
 
 # Load C++ plugin
 import os
