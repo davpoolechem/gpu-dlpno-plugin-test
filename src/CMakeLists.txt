@@ -2,6 +2,7 @@ set(sources
 #dlpno_gpu.cpp
 test.cpp
 cxx_module.cpp
+plugin.cc
 )
 
 include_directories( SYSTEM
