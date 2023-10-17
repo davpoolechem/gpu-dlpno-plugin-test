@@ -38,6 +38,7 @@ from .pymodule import *
 #from .extras import test
 
 # Load C++ plugin
+sts.path.append(os.path.join(os.getcwd(), "src"))
 from .dlpno_gpu_ccsd_test import *
 
 # Load C++ plugin
