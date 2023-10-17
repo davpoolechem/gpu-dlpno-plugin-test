@@ -39,13 +39,12 @@ from .pymodule import *
 #from .extras import test
 
 # Load C++ plugin
-sys.path.append(os.path.join(os.getcwd(), "src"))
-from .src import *
+plugdir = os.path.split(os.path.abspath(__file__))[0]
+sys.path.append(os.path.join(plugdir, "src"))
+from .gpu_dlpno_ccsd import *
 
 # Load C++ plugin
-import os
-import psi4
 plugdir = os.path.split(os.path.abspath(__file__))[0]
 sofile = plugdir + '/' + os.path.split(plugdir)[1] + '.so'
+print(sofile)
 psi4.core.plugin_load(sofile)
-
