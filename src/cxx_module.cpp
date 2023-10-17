@@ -3,11 +3,11 @@
 #include "psi4/libpsi4util/process.h"
 #include "psi4/libmints/wavefunction.h"
 
-#include <pybind11/pybind11.h>
-#include <pybind11/numpy.h>
-#include <pybind11/stl.h>
+#include <pybind11.h>
+#include <numpy.h>
+#include <stl.h>
 
-using namespace psi
+using namespace psi;
 
 namespace py = pybind11;
 using namespace pybind11::literals;
