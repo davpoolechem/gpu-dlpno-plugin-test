@@ -39,7 +39,7 @@ from .pymodule import *
 
 # Load C++ plugin
 sts.path.append(os.path.join(os.getcwd(), "src"))
-from .dlpno_gpu_ccsd_test import *
+from .src import *
 
 # Load C++ plugin
 import os
