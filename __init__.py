@@ -29,8 +29,9 @@ __version__ = '0.1'
 __author__  = 'David Poole'
 
 # Load Psi4
-psi4_sys_path = '@psi4_SYS_PATH@'
+import os 
 import sys
+psi4_sys_path = os.environ["PSI_DIR"] # hardcoded, to fix 
 sys.path.append(psi4_sys_path)
 
 # Load Python modules
