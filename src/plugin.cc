@@ -40,6 +40,11 @@ namespace dlpno {
 extern "C" PSI_API
 int read_options(std::string name, Options& options)
 {
+    if (name == "DLPNO"|| options.read_globals()) {
+        /*- use GPU-accelerated DLPNO code? -*/ 
+        options.add_double("GPU_DLPNO", false);
+    } 
+
     return true;
 }
 
