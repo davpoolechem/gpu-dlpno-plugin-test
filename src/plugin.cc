@@ -25,6 +25,8 @@
  *
  */
 
+#include "dlpno_gpu.hpp"
+
 #include <psi4/libplugin/plugin.h>
 #include <psi4/psi4-dec.h>
 #include <psi4/liboptions/liboptions.h>
@@ -41,8 +43,8 @@ extern "C" PSI_API
 int read_options(std::string name, Options& options)
 {
     if (name == "DLPNO"|| options.read_globals()) {
-        /*- use GPU-accelerated DLPNO code? -*/ 
-        options.add_double("GPU_DLPNO", false);
+        /*- where do I say hi from? -*/ 
+        options.add_str("GPU_PRINT_FROM", "PYTHON");
     } 
 
     return true;
@@ -51,7 +53,12 @@ int read_options(std::string name, Options& options)
 extern "C" PSI_API
 SharedWavefunction gpu_dlpno_ccsd(SharedWavefunction ref_wfn, Options& options)
 {
-    return (SharedWavefunction)nullptr;
+    // Note that if this function was integrated into Psi4 we would not be using P::e.wavefunction
+    // Instead everything would be explicitly passed
+    auto wfn = std::make_shared<DLPNOCCSD_GPU>(ref_wfn, options);
+    wfn->compute_energy();
+
+    return wfn;
 }
 
 } // namespace dlpno

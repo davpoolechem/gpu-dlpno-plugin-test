@@ -1,3 +1,6 @@
+#=============================#
+#== source files to compile ==# 
+#=============================#
 set(sources
 #dlpno_gpu.cpp
 test.cpp
@@ -5,6 +8,9 @@ cxx_module.cpp
 plugin.cc
 )
 
+#===============================#
+#== setup include directories ==# 
+#===============================#
 include_directories( SYSTEM
                      "."
                      ${psi4_INCLUDE_DIR}
@@ -12,6 +18,7 @@ include_directories( SYSTEM
                      /theoryfs2/ds/dpoole34/miniconda3/envs/p4dev/include/python3.9 # hardcorded for now, to fix
                    )
 
-message("Python include dir: ${PYTHON_INCLUDE_DIR}")
-
+#====================#
+#== compile target ==#
+#====================#
 add_library(base OBJECT ${sources})

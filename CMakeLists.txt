@@ -12,11 +12,11 @@ set(gpu_dlpno_ccsd_URL          "github.com/davpoolechem/gpu_dlpno_ccsd")
 set(gpu_dlpno_ccsd_LICENSE      "GPL 2+")
 
 #======================#
-#== setup base flags ==# 
+#== setup core flags ==# 
 #======================#
 set(CMAKE_CXX_STANDARD 17)
 set(POSITION_INDEPENDENT_CODE True)
-set(CMAKE_CXX_FLAGS "${OpenMP_CXX_FLAGS} -fPIC")
+set(CMAKE_CXX_FLAGS "${OpenMP_CXX_FLAGS} --std=c++17 -fPIC")
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-deprecated-declarations -fmax-errors=10")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-misleading-indentation -Werror=pedantic -pedantic-errors -fmax-errors=10")
@@ -55,17 +55,6 @@ else()
 endif()
 message(STATUS "${PN} plugin module install: ${PYMOD_INSTALL_FULLDIR}")
 
-#===============================#
-#== setup include directories ==#
-#===============================#
-#include_directories( SYSTEM
-#                     ${PROJECT_SOURCE_DIR}/src/
-#                     ${PYTHON_INCLUDE_DIRS} # for python module
-#                     ${pybind11_INCLUDE_DIRS} # for python module
-#                     ${psi4_INCLUDE_DIR} # for psi4 include files
-#                   )
-message("Python include dir #1: ${PYTHON_INCLUDE_DIR}")
-
 #===================#
 #== step into src ==#
 #===================#
@@ -78,12 +67,13 @@ set(targets
  $<TARGET_OBJECTS:base>
 )
 
-add_library(gpu_dlpno_ccsd SHARED
+add_psi4_plugin(gpu_dlpno_ccsd SHARED
   ${targets}
 )
 
 # we need the library name to be gpu_dlpno_ccsd.so, not libgpu_dlpno_ccsd.so
 set_target_properties(gpu_dlpno_ccsd PROPERTIES PREFIX "")
+
 target_link_libraries(gpu_dlpno_ccsd PRIVATE ${PYTHON_LIBRARIES})
 
 # seems to be needed to set up __init__.py correctly

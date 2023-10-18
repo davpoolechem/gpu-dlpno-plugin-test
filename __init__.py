@@ -28,23 +28,32 @@
 __version__ = '0.1'
 __author__  = 'David Poole'
 
-# Load Psi4
+#=============================#
+#== Define location of Psi4 ==# 
+#=============================#
 import os 
 import sys
-psi4_sys_path = os.environ["PSI_DIR"] # hardcoded, to fix 
-sys.path.append(psi4_sys_path)
+#psi4_sys_path = os.environ["PSI_DIR"] # hardcoded, to fix 
+#sys.path.append(psi4_sys_path)
 
-# Load Python modules
+#=================================================#
+#== Load Python-side functions from pymodule.py ==# 
+#=================================================#
 from .pymodule import *
 #from .extras import test
 
-# Load C++ plugin
+#=========================================#
+#== Load C++-side functions from pybind ==# 
+#==  source files are in {plugdir}/src  ==#
+#=========================================#
 plugdir = os.path.split(os.path.abspath(__file__))[0]
 sys.path.append(os.path.join(plugdir, "src"))
 from .gpu_dlpno_ccsd import *
 
-# Load C++ plugin
+#==========================================#
+#==           "plug in" to Psi4          ==#
+#== this uses Psi4's libplugin interface ==#
+#==========================================#
 plugdir = os.path.split(os.path.abspath(__file__))[0]
 sofile = plugdir + '/' + os.path.split(plugdir)[1] + '.so'
-print(sofile)
 psi4.core.plugin_load(sofile)

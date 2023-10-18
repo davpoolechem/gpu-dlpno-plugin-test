@@ -1,4 +1,4 @@
-#include <psi4/libfock/jk.h>
+#include <psi4/libdlpno/dlpno.h>
 #include <stdio.h>
 
 namespace psi {
