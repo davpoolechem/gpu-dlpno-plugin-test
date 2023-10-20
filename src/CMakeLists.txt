@@ -2,7 +2,7 @@
 #== source files to compile ==# 
 #=============================#
 set(sources
-#dlpno_gpu.cpp
+dlpno_gpu.cpp
 test.cpp
 cxx_module.cpp
 plugin.cc
