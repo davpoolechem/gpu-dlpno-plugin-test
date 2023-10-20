@@ -4,6 +4,7 @@ namespace psi {
 namespace dlpno { 
 
 DLPNOCCSD_GPU::DLPNOCCSD_GPU(SharedWavefunction ref_wfn, Options& options) : DLPNOCCSD(ref_wfn, options) { common_init(); }
+//DLPNOCCSD_GPU::DLPNOCCSD_GPU(SharedWavefunction ref_wfn, Options& options) { common_init(); }
 DLPNOCCSD_GPU::~DLPNOCCSD_GPU() {}
 
 void DLPNOCCSD_GPU::common_init() {

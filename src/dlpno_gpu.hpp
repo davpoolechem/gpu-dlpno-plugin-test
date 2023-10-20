@@ -1,7 +1,12 @@
 #include <psi4/libdlpno/dlpno.h>
 
+#ifndef DLPNO_CCSD
+#define DLPNO_CCSD
+
 namespace psi {
 namespace dlpno {
+
+class DLPNOCCSD;
 
 class DLPNOCCSD_GPU : public DLPNOCCSD { 
 public:
@@ -16,3 +21,6 @@ private:
 
 } // namespace dlpno
 } // namespace psi4
+
+
+#endif
